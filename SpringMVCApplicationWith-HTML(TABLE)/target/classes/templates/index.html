@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Product Manager</title>
+</head>
+<body style="background-color: #f0f4c3">
+<div class="container text-center">
+  <div>
+   <h1>File Upload & Download</h1>
+  </div>
+   <div class="card" style="width: 18rem;" align="center">
+      <div class="card-body" align="center">
+        <h2 class="card-title">File Upload</h2>
+        <h6 class="text-success">[[${success}]]</h6>
+        <div class="mb-3">
+          <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+            <input
+              class="form-control" name="file" type="file" id="formFile"><br />
+            <input type="submit" value="Upload" class="btn btn-warning">
+          </form>
+        </div>
+      </div>
+     </div>
+     <div class="container mt-5"> 
+      <div class="card">
+  <div class="card-body">   
+  <div class="row">
+  <th:block th:each="product: ${listProducts}">
+    <div class="col-sm-3">
+     <div> <a th:href="@{'/downloadfile?id=' + ${product.id}}"><i class="fa fa-download"></i></a></div>
+     
+ <div>[[${product.profilePicture}]]</div>
+ <div>([[${product.size}]]) B</div>
+    </div>
+   </th:block> 
+  </div>
+</div>
+  </div>
+  </div>
+<div align="center">
+<h1>Product List</h1>
+<a href="new">Create New Product</a>
+<br/><br/>
+<table border="1" cellpadding="10">
+<thead>
+<tr>
+<th>Product ID</th>
+<th>Name</th>
+<th>Brand</th>
+<th>Made In</th>
+<th>Price</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="product: ${listProducts}">
+<td th:text="${product.id}">Product ID</td>
+<td><img th:src="@{'/image?id='+ ${product.id}}" width="100px" height="100px"></td> 
+<td th:text="${product.name}">Name</td>
+<td th:text="${product.brand}">Brand</td>
+<td th:text="${product.madein}">Made in</td>
+<td th:text="${product.price}">Price</td>
+<td>
+<a th:href="@{'/edit/'+${product.id}}">Edit</a>
+&nbsp;&nbsp;&nbsp;
+<a th:href="@{'/delete/'+${product.id}}">Delete</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
