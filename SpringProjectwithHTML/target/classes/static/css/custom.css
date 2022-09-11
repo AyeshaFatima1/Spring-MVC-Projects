@@ -1,0 +1,38 @@
+@charset "UTF-8";
+body {
+    background-color:lightgreen;
+}
+h1{
+	background-color:pink;
+	color:yellow;
+	text-align:center;
+}
+h2{
+	color:Blue;
+}
+img{
+	height: 400px;
+    width: 350px;
+}
+/*img{
+	border-radius:8px;
+}*/
+/*img{
+	border-radius:50%;
+}*/
+/*img{
+	margin:3px;
+	padding:20px;
+	border:8px solid #ddd; 
+    border-radius:4px;
+    width:150px;
+}*/
+/*img{
+	opacity:0.5;
+}*/
+/*img:hover{
+            transform:scale(-1)
+}*/
+/*img{
+	filter:grayscale(100%);
+}*/
