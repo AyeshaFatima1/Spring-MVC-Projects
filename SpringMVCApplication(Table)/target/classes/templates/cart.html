@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Product Manager</title>
+</head>
+<body>
+<h1>Cart Info</h1>
+<table border="1" cellpadding="10">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Price</th>
+<th>Image</th>
+<th>Quantity</th>
+<th>Sub Total</th>
+</tr>
+<tr th:each="item: ${session.cart}">
+<td th:text="${item.product.id}">Product ID</td>
+<td th:text="${item.product.name}">Name</td>
+<td th:text="${item.product.price}">Price</td>
+<!-- td><img alt="" th:src="*{'images/hpLaptop.png;base64,'+{product.image}}" style="width:100px; height:100px"/></td-->
+<td><img th:src="${'/images/' + item.product.image}" width=120; height=100/></td>
+<td th:text="${item.product.quantity}"></td>
+<td th:text="${item.product.price*item.quantity}"></td>
+</tr>
+</table>
+<br/>
+<a th:href="${'/'}">Continue Shopping</a>
+</body>
+</html>
